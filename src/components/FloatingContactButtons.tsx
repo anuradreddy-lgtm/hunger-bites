@@ -10,7 +10,7 @@ export const FloatingContactButtons: React.FC = () => {
         href="https://maps.app.goo.gl/dMPNmsEJGBRcxqtd6?g_st=ac"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-14 h-14 rounded-full bg-red-650 hover:bg-red-700 flex items-center justify-center text-white text-2xl shadow-3d hover:shadow-3d-lg hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
+        className="w-14 h-14 rounded-full bg-red-600 hover:bg-red-700 flex items-center justify-center text-white text-2xl shadow-3d hover:shadow-3d-lg hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
         title="Our Location"
       >
         <FiMapPin className="stroke-[2.5]" />
