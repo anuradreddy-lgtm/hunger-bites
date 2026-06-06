@@ -47,9 +47,6 @@ export const Footer: React.FC = () => {
               <li>
                 <Link to="/menu" className="hover:text-primary transition-colors">View Menu</Link>
               </li>
-              <li>
-                <Link to="/track" className="hover:text-primary transition-colors">Track Order</Link>
-              </li>
             </ul>
           </div>
 

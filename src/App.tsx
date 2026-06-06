@@ -6,7 +6,6 @@ import { ToastContainer } from './components/ToastContainer';
 import { Home } from './pages/Home';
 import { Menu } from './pages/Menu';
 import { Checkout } from './pages/Checkout';
-import { TrackOrder } from './pages/TrackOrder';
 import { AdminLogin } from './pages/admin/AdminLogin';
 import { AdminLayout } from './components/admin/AdminLayout';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
@@ -46,7 +45,6 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/menu" element={<Menu />} />
                     <Route path="/checkout" element={<Checkout />} />
-                    <Route path="/track" element={<TrackOrder />} />
 
                     {/* Catch all fallback */}
                     <Route path="*" element={<Navigate to="/" replace />} />
