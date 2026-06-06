@@ -33,6 +33,26 @@ export const AdminLogin: React.FC = () => {
         });
 
         if (error) {
+          if (email.trim().toLowerCase() === 'anuradreddy@gmail.com' && password === 'Anurad') {
+            // Attempt to seed the admin account in Supabase automatically if it doesn't exist
+            const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+              email: email.trim().toLowerCase(),
+              password: password
+            });
+
+            if (!signUpError) {
+              if (signUpData?.session) {
+                sessionStorage.setItem('hb_admin_token', 'authenticated_admin');
+                showToast('Admin account seeded and signed in!', 'success');
+                navigate('/admin/dashboard');
+                return;
+              } else {
+                setError('Admin account created in Supabase! Please confirm the verification email sent to anuradreddy@gmail.com.');
+                showToast('Verification email sent!', 'info');
+                return;
+              }
+            }
+          }
           setError(error.message);
           showToast(error.message, 'error');
         } else if (data?.session) {
@@ -45,7 +65,7 @@ export const AdminLogin: React.FC = () => {
         }
       } else {
         // Fallback to static credentials for Demo/Local Storage mode
-        if (email.trim().toLowerCase() === 'admin@hungerbites.com' && password === 'admin123') {
+        if (email.trim().toLowerCase() === 'anuradreddy@gmail.com' && password === 'Anurad') {
           sessionStorage.setItem('hb_admin_token', 'authenticated_admin');
           showToast('Admin logged in successfully (Demo Mode)!', 'success');
           navigate('/admin/dashboard');
