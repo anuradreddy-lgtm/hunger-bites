@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AppProvider } from './context/AppContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { FloatingContactButtons } from './components/FloatingContactButtons';
 import { ToastContainer } from './components/ToastContainer';
 import { Home } from './pages/Home';
 import { Menu } from './pages/Menu';
@@ -51,6 +52,7 @@ function App() {
                   </Routes>
                 </div>
                 <Footer />
+                <FloatingContactButtons />
               </div>
             }
           />
