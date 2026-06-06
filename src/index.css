@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #FF6B00;
+  --color-primary-hover: #E05E00;
+  --color-secondary: #FF8A3D;
+  --color-dark: #1F2937;
+  --color-light: #F8F9FA;
+  
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  
+  /* Layered 3D Shadows */
+  --shadow-3d-sm: 0 2px 4px rgba(0,0,0,0.03), 0 4px 8px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.4);
+  --shadow-3d: 0 10px 25px rgba(0,0,0,0.05), 0 6px 12px rgba(0,0,0,0.03), inset 0 1px 1px rgba(255,255,255,0.5);
+  --shadow-3d-lg: 0 20px 45px rgba(0,0,0,0.08), 0 15px 20px rgba(0,0,0,0.04), inset 0 1px 1px rgba(255,255,255,0.6);
+  --shadow-3d-glow: 0 10px 30px rgba(255,107,0,0.2), 0 4px 10px rgba(255,107,0,0.1);
+}
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    transition-property: color, background-color;
+    transition-duration: 200ms;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+/* Custom scrollbar and glassmorphism helpers */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Floating Animations */
+@keyframes float-3d {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+@keyframes float-3d-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-3deg);
+  }
+}
+
+@keyframes float-3d-fast {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+@keyframes mesh-pulse {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-float-3d {
+  animation: float-3d 5s ease-in-out infinite;
+}
+
+.animate-float-3d-slow {
+  animation: float-3d-slow 8s ease-in-out infinite;
+}
+
+.animate-float-3d-fast {
+  animation: float-3d-fast 3.5s ease-in-out infinite;
+}
+
+.animate-mesh-pulse {
+  background-size: 200% 200%;
+  animation: mesh-pulse 15s ease infinite;
+}
+
+/* Tactile 3D Buttons */
+.btn-tactile {
+  position: relative;
+  border-bottom-width: 4px;
+  border-color: #E05E00;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-tactile:active {
+  border-bottom-width: 0px;
+  transform: translateY(4px);
+}
+
+.btn-tactile-secondary {
+  position: relative;
+  border-bottom-width: 4px;
+  border-color: #cbd5e1;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.dark .btn-tactile-secondary {
+  border-color: #4b5563;
+}
+.btn-tactile-secondary:active {
+  border-bottom-width: 0px;
+  transform: translateY(4px);
+}
+
+.card-3d {
+  position: relative;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-3d);
+}
+
+.dark .card-3d {
+  background-color: rgba(31, 41, 55, 0.7);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.card-3d:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-3d-lg);
+}
